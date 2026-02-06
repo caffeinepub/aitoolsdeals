@@ -1,0 +1,106 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-06T15:56:57.855Z",
+  "summary": "Diff implements several requested technical SEO/perf items (lazy-loaded sections, React Query caching tweaks, robots/sitemap, SEO meta tags, JSON-LD component, validation checklist). However, it also introduces multiple visible UI/copy/style changes (violating the pixel-identical constraint), adds backend logic changes, and the JSON-LD and image-modern-format requirements appear only partially met.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Enforce pixel-identical UI by limiting changes to non-visual technical optimizations only; no user-facing strings changed.",
+      "reason": "Diff shows multiple visible text/content and styling/asset changes in UI components and broad UI redesign indicated in summaries, which violates the pixel-identical/no-copy-change constraint rather than enforcing it.",
+      "evidence": [
+        "frontend/src/components/ToolCard.tsx",
+        "frontend/src/components/TrustSection.tsx",
+        "frontend/src/components/WhyUseSection.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Serve modern image formats (WebP/AVIF) via <picture> where possible while preserving identical visuals and dimensions.",
+      "reason": "Diff adds width/height, loading, decoding attributes, but no evidence of <picture> usage or WebP/AVIF sources for existing images.",
+      "evidence": [
+        "frontend/src/components/ToolCard.tsx",
+        "frontend/src/components/TrustSection.tsx",
+        "frontend/src/components/WhyUseSection.tsx"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Add ItemList JSON-LD representing the tools list with at minimum name + url for each item, derived from the same tool data used on the page.",
+      "reason": "SeoJsonLd ItemList uses SoftwareApplication entries with name/description/category and optional offers/ratings, but shows no per-item URL field (e.g., tool.website) in the JSON-LD output.",
+      "evidence": [
+        "frontend/src/components/SeoJsonLd.tsx"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Provide a technical-only validation checklist including recorded Lighthouse Performance and SEO scores and confirmation of pixel-identical UI.",
+      "reason": "Checklist file exists and lists targets/expected improvements, but the diff does not show actual recorded Lighthouse scores (numbers/results) being captured.",
+      "evidence": [
+        "frontend/TECHNICAL_VALIDATION_CHECKLIST.md"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend actor behavior changes (new validations/traps, tool map logic changes, query implementations) despite request being frontend-only technical SEO/perf changes and no new backend services.",
+      "reason": "BuildRequest did not request backend logic changes; backend was to remain a single Motoko actor, but requirements focus on landing page frontend SEO/perf and constraints include 'No new backend services' (not 'change backend logic').",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "New/changed user-facing landing page copy and UI elements inside tool cards (e.g., bonus perks line, deal banner, 'Pro version free' banner, emoji-prefixed text).",
+      "reason": "Explicitly disallowed by REQ-1 and non-goals (no visible copy/CTA changes or new visible UI elements).",
+      "evidence": [
+        "frontend/src/components/ToolCard.tsx"
+      ]
+    },
+    {
+      "description": "Visible content/copy changes in below-the-fold sections (e.g., TrustSection headline, WhyUseSection feature titles/descriptions) and asset path changes to generated images.",
+      "reason": "Not requested; violates pixel-identical constraint and 'no copy changes'.",
+      "evidence": [
+        "frontend/src/components/TrustSection.tsx",
+        "frontend/src/components/WhyUseSection.tsx"
+      ]
+    },
+    {
+      "description": "Large-scale restyling/redesign across multiple components (hero/header/search/category filters/footer/modal/top banner) as described in the file summary.",
+      "reason": "Not requested and violates pixel-identical constraint; indicates changes to layout/styling/components beyond technical-only optimizations.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Meta title/description content that appears to introduce new marketing copy/keywords (e.g., 'Free AI Tools & Pro Trials - Unlock Premium AI Deals & Coupons' and mentions of specific tools).",
+      "reason": "REQ-7 requires using existing on-page messaging with no invented marketing copy; diff provides new phrasing and specific tool mentions without evidence they exist on-page.",
+      "evidence": [
+        "frontend/index.html"
+      ]
+    },
+    {
+      "description": "Added DNS prefetch to fonts.googleapis.com.",
+      "reason": "Not requested in requirements; also introduces an external domain hint even though no change was requested here.",
+      "evidence": [
+        "frontend/index.html"
+      ]
+    }
+  ],
+  "confidence": 0.78,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/TECHNICAL_VALIDATION_CHECKLIST.md",
+    "frontend/index.html",
+    "frontend/public/robots.txt",
+    "frontend/public/sitemap.xml",
+    "frontend/src/App.tsx",
+    "frontend/src/components/SeoJsonLd.tsx",
+    "frontend/src/components/ToolCard.tsx",
+    "frontend/src/components/TrustSection.tsx",
+    "frontend/src/components/WhyUseSection.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "project_state.json"
+  ]
+}

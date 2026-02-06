@@ -1,0 +1,164 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-06T15:56:57.859Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 10,
+    "implemented": 10,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Enforce the pixel-identical UI constraint by limiting changes to non-visual technical optimizations only (no changes to any visible text/copy, layout, spacing, colors, fonts, component structure, images/icons, section order, or styling).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/ToolCard.tsx",
+          "frontend/src/components/TrustSection.tsx",
+          "frontend/src/components/WhyUseSection.tsx",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/ToolCard.tsx",
+          "frontend/src/components/TrustSection.tsx",
+          "frontend/src/components/WhyUseSection.tsx",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Provide a technical-only validation checklist in the PR/notes including Lighthouse Performance and SEO scores and confirmation of pixel-identical UI (no visual diffs).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/TECHNICAL_VALIDATION_CHECKLIST.md"
+        ],
+        "matchedFiles": [
+          "frontend/TECHNICAL_VALIDATION_CHECKLIST.md"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Improve landing page performance by code-splitting and lazy-loading below-the-fold React sections so that above-the-fold content renders with a smaller initial JS bundle, without changing the final rendered UI.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Defer or async all non-critical JavaScript so it does not block first paint/interaction (keeping behavior identical).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Optimize images without changing appearance: ensure explicit width/height (or equivalent intrinsic sizing) is set to prevent layout shifts, keep lazy loading for non-critical images, and serve modern formats (WebP/AVIF) via <picture> where possible while preserving identical visuals and dimensions.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ToolCard.tsx",
+          "frontend/src/components/TrustSection.tsx",
+          "frontend/src/components/WhyUseSection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ToolCard.tsx",
+          "frontend/src/components/TrustSection.tsx",
+          "frontend/src/components/WhyUseSection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add caching/deduplication for public data and prevent duplicate network requests by tightening React Query query configuration at the hook level (since frontend/src/main.tsx cannot be modified) and by ensuring queries are not refetched unnecessarily.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Ensure loading/skeleton behavior ends immediately when data is available by removing any conditions that keep skeletons visible after tools data has resolved (without changing the skeleton design, layout, or visual styling).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Implement technical SEO metadata in frontend/index.html without changing visible content: add/verify <title> and meta description using existing page messaging, add canonical URL, and add Open Graph + Twitter meta tags.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html"
+        ],
+        "matchedFiles": [
+          "frontend/index.html"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add sitemap.xml and robots.txt as static assets (allow indexing) so crawlers can discover the landing page, without changing any visible UI.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/robots.txt",
+          "frontend/public/sitemap.xml"
+        ],
+        "matchedFiles": [
+          "frontend/public/robots.txt",
+          "frontend/public/sitemap.xml"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add JSON-LD structured data (WebSite, Organization, ItemList) without any visible changes, ensuring the JSON-LD reflects the landing page content/tool listing semantics.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SeoJsonLd.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SeoJsonLd.tsx",
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/TECHNICAL_VALIDATION_CHECKLIST.md",
+    "frontend/index.html",
+    "frontend/public/robots.txt",
+    "frontend/public/sitemap.xml",
+    "frontend/src/App.tsx",
+    "frontend/src/components/SeoJsonLd.tsx",
+    "frontend/src/components/ToolCard.tsx",
+    "frontend/src/components/TrustSection.tsx",
+    "frontend/src/components/WhyUseSection.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

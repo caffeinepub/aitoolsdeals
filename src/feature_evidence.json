@@ -1,0 +1,194 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-enforce-the-pixel-identical-ui-constraint-by-limiting-changes-to-non-visual-technical-optimizations-only-no-changes-to-any-visible-text-copy-layout-spacing-colors-fonts-component-structure-images-icons-section-order-or-styling",
+      "featureTitle": "Enforce the pixel-identical UI constraint by limiting changes to non-visual technical optimizations only (no changes to any visible text/copy, layout, spacing, colors, fonts, component structure, images/icons, section order, or styling).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/components/ToolCard.tsx",
+        "frontend/src/components/TrustSection.tsx",
+        "frontend/src/components/WhyUseSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-landing-page-performance-by-code-splitting-and-lazy-loading-below-the-fold-react-sections-so-that-above-the-fold-content-renders-with-a-smaller-initial-js-bundle-without-changing-the-final-rendered-ui",
+      "featureTitle": "Improve landing page performance by code-splitting and lazy-loading below-the-fold React sections so that above-the-fold content renders with a smaller initial JS bundle, without changing the final rendered UI.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-defer-or-async-all-non-critical-javascript-so-it-does-not-block-first-paint-interaction-keeping-behavior-identical",
+      "featureTitle": "Defer or async all non-critical JavaScript so it does not block first paint/interaction (keeping behavior identical).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-optimize-images-without-changing-appearance-ensure-explicit-width-height-or-equivalent-intrinsic-sizing-is-set-to-prevent-layout-shifts-keep-lazy-loading-for-non-critical-images-and-serve-modern-formats-webp-avif-via-picture-where-possible-while-preserving-identical-visuals-and-dimensions",
+      "featureTitle": "Optimize images without changing appearance: ensure explicit width/height (or equivalent intrinsic sizing) is set to prevent layout shifts, keep lazy loading for non-critical images, and serve modern formats (WebP/AVIF) via <picture> where possible while preserving identical visuals and dimensions.",
+      "files": [
+        "frontend/src/components/ToolCard.tsx",
+        "frontend/src/components/TrustSection.tsx",
+        "frontend/src/components/WhyUseSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-caching-deduplication-for-public-data-and-prevent-duplicate-network-requests-by-tightening-react-query-query-configuration-at-the-hook-level-since-frontend-src-main-tsx-cannot-be-modified-and-by-ensuring-queries-are-not-refetched-unnecessarily",
+      "featureTitle": "Add caching/deduplication for public data and prevent duplicate network requests by tightening React Query query configuration at the hook level (since frontend/src/main.tsx cannot be modified) and by ensuring queries are not refetched unnecessarily.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-loading-skeleton-behavior-ends-immediately-when-data-is-available-by-removing-any-conditions-that-keep-skeletons-visible-after-tools-data-has-resolved-without-changing-the-skeleton-design-layout-or-visual-styling",
+      "featureTitle": "Ensure loading/skeleton behavior ends immediately when data is available by removing any conditions that keep skeletons visible after tools data has resolved (without changing the skeleton design, layout, or visual styling).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-technical-seo-metadata-in-frontend-index-html-without-changing-visible-content-add-verify-title-and-meta-description-using-existing-page-messaging-add-canonical-url-and-add-open-graph-twitter-meta-tags",
+      "featureTitle": "Implement technical SEO metadata in frontend/index.html without changing visible content: add/verify <title> and meta description using existing page messaging, add canonical URL, and add Open Graph + Twitter meta tags.",
+      "files": [
+        "frontend/index.html"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-sitemap-xml-and-robots-txt-as-static-assets-allow-indexing-so-crawlers-can-discover-the-landing-page-without-changing-any-visible-ui",
+      "featureTitle": "Add sitemap.xml and robots.txt as static assets (allow indexing) so crawlers can discover the landing page, without changing any visible UI.",
+      "files": [
+        "frontend/public/robots.txt",
+        "frontend/public/sitemap.xml"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-json-ld-structured-data-website-organization-itemlist-without-any-visible-changes-ensuring-the-json-ld-reflects-the-landing-page-content-tool-listing-semantics",
+      "featureTitle": "Add JSON-LD structured data (WebSite, Organization, ItemList) without any visible changes, ensuring the JSON-LD reflects the landing page content/tool listing semantics.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SeoJsonLd.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-a-technical-only-validation-checklist-in-the-pr-notes-including-lighthouse-performance-and-seo-scores-and-confirmation-of-pixel-identical-ui-no-visual-diffs",
+      "featureTitle": "Provide a technical-only validation checklist in the PR/notes including Lighthouse Performance and SEO scores and confirmation of pixel-identical UI (no visual diffs).",
+      "files": [
+        "frontend/TECHNICAL_VALIDATION_CHECKLIST.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

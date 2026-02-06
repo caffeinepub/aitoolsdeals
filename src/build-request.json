@@ -1,0 +1,203 @@
+{
+  "kind": "build_request",
+  "title": "Improve landing page SEO and loading performance with technical-only changes (pixel-identical UI)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Enforce the pixel-identical UI constraint by limiting changes to non-visual technical optimizations only (no changes to any visible text/copy, layout, spacing, colors, fonts, component structure, images/icons, section order, or styling).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Pixel-identical UI required. Do NOT change any visible content in any way."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A before/after visual comparison of the landing page shows no pixel-level differences in content, layout, spacing, colors, typography, images, icons, and section ordering.",
+        "No user-facing strings are changed anywhere in the UI."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Improve landing page performance by code-splitting and lazy-loading below-the-fold React sections so that above-the-fold content renders with a smaller initial JS bundle, without changing the final rendered UI.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Reduce initial load time by code-splitting and lazy-loading below-the-fold content."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Below-the-fold sections (those rendered after the tools grid) are loaded via dynamic import (React.lazy) and do not block initial render of the hero/search/tools area.",
+        "No layout shift (CLS) is introduced in the initial viewport due to lazy loading.",
+        "The page remains functionally identical after all chunks load (same components, same order, same styling)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Defer or async all non-critical JavaScript so it does not block first paint/interaction (keeping behavior identical).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Defer or async all non-critical JavaScript."
+        ]
+      },
+      "acceptanceCriteria": [
+        "No new render-blocking scripts are added to the document head.",
+        "Any non-critical work (e.g., below-the-fold preloading) is scheduled after initial render (e.g., requestIdleCallback / setTimeout) and does not delay above-the-fold rendering.",
+        "The landing page remains fully functional with identical behavior."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Optimize images without changing appearance: ensure explicit width/height (or equivalent intrinsic sizing) is set to prevent layout shifts, keep lazy loading for non-critical images, and serve modern formats (WebP/AVIF) via <picture> where possible while preserving identical visuals and dimensions.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Optimize images without changing appearance (same size, quality, and visuals)."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Images used in tool cards and other sections do not cause layout shifts (CLS does not increase).",
+        "All non-critical images remain lazy-loaded and use async decoding.",
+        "If modern formats are added, the fallback preserves identical pixel dimensions and appearance compared to current PNGs."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add caching/deduplication for public data and prevent duplicate network requests by tightening React Query query configuration at the hook level (since frontend/src/main.tsx cannot be modified) and by ensuring queries are not refetched unnecessarily.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Add caching for public data and prevent duplicate network requests."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Repeated navigations/rehydrations do not trigger redundant immediate refetches for the same tool data within a reasonable freshness window (staleTime).",
+        "React Query hooks define appropriate staleTime/cache (gcTime) and disable refetch-on-focus/reconnect where safe for this landing page use case.",
+        "No duplicate simultaneous requests for the same queryKey occur during initial load (dedupe behavior verified in Network panel)."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Ensure loading/skeleton behavior ends immediately when data is available by removing any conditions that keep skeletons visible after tools data has resolved (without changing the skeleton design, layout, or visual styling).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Ensure loading/skeleton state ends immediately when data is available."
+        ]
+      },
+      "acceptanceCriteria": [
+        "When tools data is available, the tools grid renders immediately and skeletons are not shown concurrently or longer than necessary.",
+        "No new loading UI is introduced and existing loading UI is not visually modified."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement technical SEO metadata in frontend/index.html without changing visible content: add/verify <title> and meta description using existing page messaging, add canonical URL, and add Open Graph + Twitter meta tags.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Add or verify title and meta description using existing page messaging.",
+          "Add canonical URL.",
+          "Add Open Graph and Twitter meta tags."
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/index.html contains a single title tag and a meta description that matches existing on-page messaging (no new marketing copy invented).",
+        "A canonical link tag is present.",
+        "Open Graph tags (og:title, og:description, og:type, og:url) and Twitter tags (twitter:card, twitter:title, twitter:description) are present.",
+        "No visible UI changes occur due to metadata changes."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Add sitemap.xml and robots.txt as static assets (allow indexing) so crawlers can discover the landing page, without changing any visible UI.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Generate sitemap.xml and robots.txt (allow indexing)."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A valid robots.txt exists that allows indexing (no Disallow of the main page).",
+        "A valid sitemap.xml exists and includes at least the landing page URL.",
+        "Both files are served as static assets from the frontend (no backend routing required)."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add JSON-LD structured data (WebSite, Organization, ItemList) without any visible changes, ensuring the JSON-LD reflects the landing page content/tool listing semantics.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Add JSON-LD structured data (WebSite, Organization, ItemList)."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The rendered document includes a <script type=\"application/ld+json\"> containing WebSite and Organization objects.",
+        "An ItemList JSON-LD block is present representing the tools list (at minimum name + url for each item, derived from the same tool data used on the page).",
+        "No visible changes occur; JSON-LD is not rendered into the UI."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Provide a technical-only validation checklist in the PR/notes including Lighthouse Performance and SEO scores and confirmation of pixel-identical UI (no visual diffs).",
+      "target": "unknown",
+      "source": {
+        "messageIds": [
+          "recent-user-message"
+        ],
+        "quotes": [
+          "Brief checklist of what you changed (technical) and resulting Lighthouse scores."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A short checklist enumerates each technical change applied (code splitting, metadata, sitemap/robots, caching, image handling).",
+        "Lighthouse Performance and SEO scores are recorded for the landing page after changes (target: Performance 90+, SEO 95+).",
+        "Checklist explicitly states that no visible content/design changes were made."
+      ]
+    }
+  ],
+  "constraints": [
+    "Pixel-identical UI: do not change any visible content (text/copy), layout, spacing, colors, fonts, components, images/icons, sections, order, or styling.",
+    "Frontend immutable paths must not be edited: frontend/src/main.tsx, frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, and anything under frontend/src/components/ui.",
+    "No new backend services; keep the backend as a single Motoko actor in backend/main.mo.",
+    "Use English for any user-facing text in this build request."
+  ],
+  "nonGoals": [
+    "Implementing Next.js/SSR framework migration (not supported in this stack).",
+    "Changing or rewriting any landing page copy, headings, CTAs, or adding new visible UI elements.",
+    "Adding third-party analytics, tag managers, or external SEO services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

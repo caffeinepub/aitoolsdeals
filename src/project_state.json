@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Optimize the landing page for performance and SEO using technical changes only, with a strict requirement to keep the UI pixel-identical (no visible content/design changes).",
+  "architectural_notes": [
+    "Absolute constraint: pixel-identical UI required; no changes to visible text/copy/layout/spacing/colors/fonts/components/images/icons/sections/order/styling. Only technical/under-the-hood changes allowed."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-enforce-the-pixel-identical-ui-constraint-by-limiting-changes-to-non-visual-technical-optimizations-only-no-changes-to-any-visible-text-copy-layout-spacing-colors-fonts-component-structure-images-icons-section-order-or-styling",
+      "title": "Enforce the pixel-identical UI constraint by limiting changes to non-visual technical optimizations only (no changes to any visible text/copy, layout, spacing, colors, fonts, component structure, images/icons, section order, or styling).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-landing-page-performance-by-code-splitting-and-lazy-loading-below-the-fold-react-sections-so-that-above-the-fold-content-renders-with-a-smaller-initial-js-bundle-without-changing-the-final-rendered-ui",
+      "title": "Improve landing page performance by code-splitting and lazy-loading below-the-fold React sections so that above-the-fold content renders with a smaller initial JS bundle, without changing the final rendered UI.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-defer-or-async-all-non-critical-javascript-so-it-does-not-block-first-paint-interaction-keeping-behavior-identical",
+      "title": "Defer or async all non-critical JavaScript so it does not block first paint/interaction (keeping behavior identical).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-optimize-images-without-changing-appearance-ensure-explicit-width-height-or-equivalent-intrinsic-sizing-is-set-to-prevent-layout-shifts-keep-lazy-loading-for-non-critical-images-and-serve-modern-formats-webp-avif-via-picture-where-possible-while-preserving-identical-visuals-and-dimensions",
+      "title": "Optimize images without changing appearance: ensure explicit width/height (or equivalent intrinsic sizing) is set to prevent layout shifts, keep lazy loading for non-critical images, and serve modern formats (WebP/AVIF) via <picture> where possible while preserving identical visuals and dimensions.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-caching-deduplication-for-public-data-and-prevent-duplicate-network-requests-by-tightening-react-query-query-configuration-at-the-hook-level-since-frontend-src-main-tsx-cannot-be-modified-and-by-ensuring-queries-are-not-refetched-unnecessarily",
+      "title": "Add caching/deduplication for public data and prevent duplicate network requests by tightening React Query query configuration at the hook level (since frontend/src/main.tsx cannot be modified) and by ensuring queries are not refetched unnecessarily.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-loading-skeleton-behavior-ends-immediately-when-data-is-available-by-removing-any-conditions-that-keep-skeletons-visible-after-tools-data-has-resolved-without-changing-the-skeleton-design-layout-or-visual-styling",
+      "title": "Ensure loading/skeleton behavior ends immediately when data is available by removing any conditions that keep skeletons visible after tools data has resolved (without changing the skeleton design, layout, or visual styling).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-technical-seo-metadata-in-frontend-index-html-without-changing-visible-content-add-verify-title-and-meta-description-using-existing-page-messaging-add-canonical-url-and-add-open-graph-twitter-meta-tags",
+      "title": "Implement technical SEO metadata in frontend/index.html without changing visible content: add/verify <title> and meta description using existing page messaging, add canonical URL, and add Open Graph + Twitter meta tags.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-sitemap-xml-and-robots-txt-as-static-assets-allow-indexing-so-crawlers-can-discover-the-landing-page-without-changing-any-visible-ui",
+      "title": "Add sitemap.xml and robots.txt as static assets (allow indexing) so crawlers can discover the landing page, without changing any visible UI.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-json-ld-structured-data-website-organization-itemlist-without-any-visible-changes-ensuring-the-json-ld-reflects-the-landing-page-content-tool-listing-semantics",
+      "title": "Add JSON-LD structured data (WebSite, Organization, ItemList) without any visible changes, ensuring the JSON-LD reflects the landing page content/tool listing semantics.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-technical-only-validation-checklist-in-the-pr-notes-including-lighthouse-performance-and-seo-scores-and-confirmation-of-pixel-identical-ui-no-visual-diffs",
+      "title": "Provide a technical-only validation checklist in the PR/notes including Lighthouse Performance and SEO scores and confirmation of pixel-identical UI (no visual diffs).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Improve landing page performance (LCP/INP/CLS) via technical optimizations only while keeping UI pixel-identical (code-splitting/lazy-loading, defer non-critical JS, image optimization without visual change, caching/dedupe requests, correct skeleton end-state)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Improve landing page SEO without visible changes (title/meta description using existing messaging, canonical, OG/Twitter tags, sitemap.xml, robots.txt, JSON-LD structured data: WebSite/Organization/ItemList)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Improve landing page SEO and loading performance with technical-only changes (pixel-identical UI)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
